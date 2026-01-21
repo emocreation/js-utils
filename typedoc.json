@@ -1,0 +1,9 @@
+{
+  "entryPoints": ["./index.ts"],
+  "plugin": ["typedoc-plugin-markdown"],
+  "out": "docs",
+  "entryFileName": "API",
+  "readme": "none",
+  "router": "module",
+  "disableSources": true
+}
