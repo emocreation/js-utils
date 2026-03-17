@@ -14,9 +14,9 @@
 export const checkStringPresent = (value: any): value is string =>
   typeof value === 'string' && value.trim().length > 0
 /**
- * Checks if a value is a plain object (not null, not array).
+ * Checks if a value is an object (not null, not array).
  * @param object - The value to check
- * @returns True if the value is a plain object, false otherwise
+ * @returns True if the value is an object, false otherwise
  * @example
  * ```ts
  * checkObject({}) // true
@@ -26,8 +26,7 @@ export const checkStringPresent = (value: any): value is string =>
  * ```
  */
 export const checkObject = (object: any): object is Record<string, any> =>
-  typeof object === 'object' && object !== null && !Array.isArray(object) &&
-  object.constructor === Object
+  typeof object === 'object' && object !== null && !Array.isArray(object)
 /**
  * Checks if a value is a non-empty array.
  * @param raw - The value to check
@@ -44,7 +43,8 @@ export const checkObject = (object: any): object is Record<string, any> =>
  * hasValues(undefined) // false
  * ```
  */
-export const hasValues = (raw: any): raw is any[] => Array.isArray(raw) && raw.length > 0
+export const hasValues = (raw: any): raw is any[] =>
+  Array.isArray(raw) && raw.length > 0
 /**
  * Splits an array into smaller chunks of a specified size.
  * @param arr - The array to split into chunks

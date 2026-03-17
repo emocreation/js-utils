@@ -37,8 +37,8 @@ test('checkObject', () => {
   expect(checkObject('string')).toBe(false)
   expect(checkObject(42)).toBe(false)
   expect(checkObject(true)).toBe(false)
-  expect(checkObject(new Date())).toBe(false) // Date is an object but not plain
-  expect(checkObject(() => {})).toBe(false) // Function is an object but not plain
+  expect(checkObject(new Date())).toBe(true) // Date is an object
+  expect(checkObject(() => {})).toBe(false) // Function is not an object
 })
 
 test('hasValues', () => {
@@ -65,9 +65,19 @@ test('hasValues', () => {
 
 test('chunk', () => {
   // Basic functionality
-  expect(chunk([1, 2, 3, 4, 5, 6], 2)).toEqual([[1, 2], [3, 4], [5, 6]])
-  expect(chunk([1, 2, 3, 4, 5, 6], 3)).toEqual([[1, 2, 3], [4, 5, 6]])
-  expect(chunk([1, 2, 3, 4, 5, 6], 4)).toEqual([[1, 2, 3, 4], [5, 6]])
+  expect(chunk([1, 2, 3, 4, 5, 6], 2)).toEqual([
+    [1, 2],
+    [3, 4],
+    [5, 6]
+  ])
+  expect(chunk([1, 2, 3, 4, 5, 6], 3)).toEqual([
+    [1, 2, 3],
+    [4, 5, 6]
+  ])
+  expect(chunk([1, 2, 3, 4, 5, 6], 4)).toEqual([
+    [1, 2, 3, 4],
+    [5, 6]
+  ])
 
   // Edge cases
   expect(chunk([], 2)).toEqual([])
@@ -76,7 +86,10 @@ test('chunk', () => {
   expect(chunk([1, 2, 3], 2)).toEqual([[1, 2], [3]])
 
   // Different data types
-  expect(chunk(['a', 'b', 'c', 'd'], 2)).toEqual([['a', 'b'], ['c', 'd']])
+  expect(chunk(['a', 'b', 'c', 'd'], 2)).toEqual([
+    ['a', 'b'],
+    ['c', 'd']
+  ])
   expect(chunk([{}, {}, {}], 2)).toEqual([[{}, {}], [{}]])
 
   // Chunk size larger than array length
@@ -85,4 +98,3 @@ test('chunk', () => {
   // Chunk size of 1
   expect(chunk([1, 2, 3], 1)).toEqual([[1], [2], [3]])
 })
-
