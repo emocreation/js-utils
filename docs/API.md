@@ -10,7 +10,7 @@
 
 > **checkObject**(`object`): `object is Record<string, any>`
 
-Checks if a value is a plain object (not null, not array).
+Checks if a value is an object (not null, not array).
 
 #### Parameters
 
@@ -24,7 +24,7 @@ The value to check
 
 `object is Record<string, any>`
 
-True if the value is a plain object, false otherwise
+True if the value is an object, false otherwise
 
 #### Example
 
