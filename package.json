@@ -24,15 +24,16 @@
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "prettier": "^3.9.5",
+    "prettier": "^3.9.10",
     "typedoc": "^0.28.20",
-    "typedoc-plugin-markdown": "^4.12.0",
-    "typescript": "6.0.3"
+    "typedoc-plugin-markdown": "^4.14.1",
+    "typescript": "7.0.2",
+    "typescript6": "npm:typescript@6.0.3"
   },
   "scripts": {
     "build": "bun run build.ts",
     "declare": "tsc --project tsconfig.declarations.json",
-    "docs": "typedoc",
+    "docs": "NODE_OPTIONS=\"--import=$PWD/scripts/typedoc-ts6-register.mjs\" typedoc",
     "prepublishOnly": "bun run build && bun run declare"
   },
   "author": "Ronald Mak",
